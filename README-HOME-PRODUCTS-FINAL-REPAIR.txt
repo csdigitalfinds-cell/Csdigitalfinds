@@ -1,0 +1,1 @@
+Upload index.html, products.html, and style.css only. This fixes the homepage and products page together.
