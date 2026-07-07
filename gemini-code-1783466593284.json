@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Magnetic Charging Cube",
+    "category": "Desk Setup",
+    "description": "The absolute cleanest way to declutter your workspace. Instantly charges your phone, watch, and earbuds simultaneously without a tangled mess of wires.",
+    "price_link": "YOUR_AFFILIATE_LINK_HERE",
+    "image": "https://images.unsplash.com/photo-1622445262465-2481c4574875?w=500&q=80"
+  },
+  {
+    "id": 2,
+    "name": "Ultra-Slim Mechanical Keyboard",
+    "category": "Productivity",
+    "description": "Perfect tactility without the deafening noise. This sleek, compact Bluetooth mechanical keyboard switches seamlessly between your laptop, tablet, and phone.",
+    "price_link": "YOUR_AFFILIATE_LINK_HERE",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Smart Ambient LED Light Bar",
+    "category": "Smart Home",
+    "description": "Syncs beautifully with your desktop monitor to reduce eye strain and create an immersive, premium atmosphere for your late-night work or gaming sessions.",
+    "price_link": "YOUR_AFFILIATE_LINK_HERE",
+    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=500&q=80"
+  }
+]
