@@ -1,0 +1,17 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#111827}
+a{text-decoration:none;color:inherit}
+.topbar{background:#020817;color:#d4af37;text-align:center;padding:10px;font-weight:bold}
+header{background:#07111f;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:18px 6%;position:sticky;top:0;z-index:10}
+.logo{font-size:26px;font-weight:900}.logo span{color:#d4af37}
+nav a{color:#fff;margin-left:16px;font-weight:bold}
+.hero{background:linear-gradient(135deg,#07111f,#10223d);color:#fff;text-align:center;padding:90px 20px}
+.hero h1{font-size:54px;margin:0 0 15px}.hero p{font-size:18px}
+.btn{display:inline-block;background:#d4af37;color:#111;padding:14px 22px;border-radius:8px;font-weight:bold;margin-top:15px}.small{padding:10px 15px}
+.search{background:#fff;padding:24px;text-align:center}.search input{width:70%;max-width:650px;padding:14px;border:1px solid #ccc;border-radius:8px}.search button{padding:14px 20px;background:#07111f;color:#fff;border:0;border-radius:8px;font-weight:bold}
+.section{max-width:1120px;margin:auto;padding:50px 22px}.section h1,.section h2{font-size:34px}.light{background:#eef2f7;max-width:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.card{background:#fff;padding:25px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.08);display:block}
+.product span{display:inline-block;background:#eef2ff;color:#1e3a8a;padding:6px 10px;border-radius:20px;font-weight:bold;font-size:12px}
+footer{background:#07111f;color:#fff;text-align:center;padding:30px}footer a{color:#d4af37}
+@media(max-width:800px){header{display:block;text-align:center}nav a{display:inline-block;margin:8px}.hero h1{font-size:38px}.search input{width:100%;margin-bottom:10px}}
