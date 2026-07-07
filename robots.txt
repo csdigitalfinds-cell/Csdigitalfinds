@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://csdigitalfinds-cell.github.io/Csdigitalfinds/sitemap.xml
