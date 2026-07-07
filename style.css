@@ -1,1 +1,44 @@
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#111827}a{text-decoration:none;color:inherit}.topbar{background:#020817;color:#d4af37;text-align:center;padding:10px;font-weight:900}.header{background:#07111f;color:white;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:18px 6%}.logo{font-size:32px;font-weight:900}.logo span{color:#d4af37}.searchbar{display:flex}.searchbar input{flex:1;padding:15px;border:0;border-radius:12px 0 0 12px;font-size:16px}.searchbar button{background:#d4af37;border:0;padding:0 24px;font-weight:900;border-radius:0 12px 12px 0}.nav{background:#0d1f36;color:#fff;display:flex;gap:25px;justify-content:center;padding:15px;font-weight:900;flex-wrap:wrap}.hero{background:linear-gradient(135deg,#07111f,#102846);color:white;padding:70px 8%;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}.hero h1{font-size:62px;line-height:1.03;margin:0}.gold{color:#d4af37}.hero p{font-size:20px;line-height:1.6}.btn{display:inline-block;background:#d4af37;color:#111;padding:15px 25px;border-radius:12px;font-weight:900;margin-top:18px}.panel{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.22);border-radius:24px;padding:28px;text-align:center}.panel .cart{font-size:72px}.section{max-width:1280px;margin:auto;padding:45px 6%}.section h2{font-size:36px;margin-bottom:15px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}.cat,.product,.guide{background:#fff;border-radius:22px;padding:24px;box-shadow:0 12px 30px rgba(0,0,0,.08)}.cat{font-weight:900;font-size:19px}.product-img{font-size:62px;text-align:center;background:#f8fafc;border-radius:18px;padding:22px;margin:14px 0}.badge{background:#dc2626;color:white;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:900}.stars{color:#f59e0b;font-weight:900}.price{font-weight:900;margin:12px 0}.shop{display:block;text-align:center;background:#07111f;color:white;border-radius:12px;padding:13px;font-weight:900}.light{background:#eef2f7;max-width:none}.newsletter{background:#07111f;color:#fff;border-radius:22px;padding:30px}.newsletter input{padding:14px;border-radius:10px;border:0;min-width:260px}.newsletter button{padding:14px 20px;border:0;border-radius:10px;background:#d4af37;font-weight:900}footer{background:#020817;color:#fff;text-align:center;padding:35px}footer a{color:#d4af37}.admin-wrap{max-width:1050px;margin:auto;padding:35px 6%}.table{background:#fff;border-radius:20px;padding:18px;margin-top:20px;overflow:auto}table{width:100%;border-collapse:collapse}td,th{padding:12px;border-bottom:1px solid #e5e7eb;text-align:left}@media(max-width:850px){.header{display:block;text-align:center}.searchbar{margin:15px 0}.hero{grid-template-columns:1fr;text-align:center}.hero h1{font-size:42px}}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#111827}
+a{text-decoration:none;color:inherit}
+.topbar{background:#020817;color:#d4af37;text-align:center;padding:10px;font-weight:900}
+.header{background:#07111f;color:white;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:18px 6%;position:sticky;top:0;z-index:10}
+.logo{font-size:32px;font-weight:900;white-space:nowrap}
+.logo span{color:#d4af37}
+.searchbar{display:flex}
+.searchbar input{flex:1;padding:15px;border:0;border-radius:12px 0 0 12px;font-size:16px}
+.searchbar button{background:#d4af37;border:0;padding:0 24px;font-weight:900;border-radius:0 12px 12px 0}
+.nav{background:#0d1f36;color:#fff;display:flex;gap:22px;justify-content:center;padding:15px;font-weight:900;flex-wrap:wrap}
+.hero{background:radial-gradient(circle at 72% 20%,rgba(212,175,55,.25),transparent 30%),linear-gradient(135deg,#07111f,#102846);color:white;padding:70px 8%;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:62px;line-height:1.03;margin:0}
+.gold{color:#d4af37}
+.hero p{font-size:20px;line-height:1.6}
+.btn{display:inline-block;background:#d4af37;color:#111;padding:15px 25px;border-radius:12px;font-weight:900;margin-top:18px}
+.panel{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.22);border-radius:24px;padding:28px}
+.panel .cart{font-size:72px;text-align:center}
+.section{max-width:1280px;margin:auto;padding:48px 6%}
+.section h1,.section h2{font-size:36px;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.card,.product,.guide,.cat{background:#fff;border-radius:22px;padding:24px;box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.cat{display:flex;flex-direction:column;gap:10px;min-height:210px}
+.cat .icon,.product .icon{font-size:48px}
+.cat h3,.product h3{margin:0}
+.cat p,.product p,.guide p{color:#566174;line-height:1.5}
+.cat a,.shop{display:block;text-align:center;background:#07111f;color:white;border-radius:12px;padding:13px;font-weight:900;margin-top:auto}
+.badge{display:inline-block;background:#dc2626;color:white;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:900}
+.stars{color:#f59e0b;font-weight:900}
+.price{font-weight:900;margin:12px 0}
+.light{background:#eef2f7;max-width:none}
+.newsletter{background:#07111f;color:#fff;border-radius:22px;padding:30px}
+.newsletter input{padding:14px;border-radius:10px;border:0;min-width:260px}
+.newsletter button{padding:14px 20px;border:0;border-radius:10px;background:#d4af37;font-weight:900}
+footer{background:#020817;color:#fff;text-align:center;padding:35px}
+footer a{color:#d4af37}
+.admin-wrap{max-width:1100px;margin:auto;padding:35px 6%}
+.table{background:#fff;border-radius:20px;padding:18px;margin-top:20px;overflow:auto;box-shadow:0 12px 30px rgba(0,0,0,.08)}
+table{width:100%;border-collapse:collapse}
+td,th{padding:12px;border-bottom:1px solid #e5e7eb;text-align:left}
+.notice{background:#fff8df;border-left:5px solid #d4af37;padding:16px;border-radius:12px;margin:20px 0}
+@media(max-width:850px){.header{display:block;text-align:center}.searchbar{margin:15px 0}.hero{grid-template-columns:1fr;text-align:center}.hero h1{font-size:42px}}
