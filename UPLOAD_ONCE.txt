@@ -1,0 +1,34 @@
+CSDIGITALFINDS — ONE-TIME LAUNCH READY RESTORE
+
+This package restores the rich Amazon-style layout and fixes the broken merchant pathway.
+
+UPLOAD THESE 7 FILES TO THE ROOT OF YOUR GITHUB REPOSITORY:
+- index.html
+- products.html
+- categories.html
+- guides.html
+- ev-charging.html
+- style.css
+- sitemap.xml
+
+DO NOT UPLOAD THE ZIP ITSELF.
+
+ONE-TIME UPLOAD:
+1. Extract this ZIP.
+2. In GitHub, open csdigitalfinds-cell/Csdigitalfinds.
+3. Click Add file > Upload files.
+4. Drag all 7 files listed above into GitHub.
+5. Commit message:
+   Restore launch-ready storefront and remove broken EVDANCE links
+6. Choose Commit directly to the main branch.
+7. Click Commit changes.
+8. Wait 2–5 minutes.
+9. Open https://csdigitalfinds.com and press Ctrl+F5.
+
+WHAT IS FIXED:
+- Restores the rich Amazon-style homepage.
+- Repairs the Featured Products page structure.
+- Preserves the five Amazon affiliate links already in the project.
+- Adds the active Amazon Storefront link.
+- Removes all visible links to the parked EVDANCE/GoDaddy destination.
+- Keeps navigation, analytics, AdSense, categories, guides, and disclosure.
