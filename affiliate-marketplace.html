@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliate Marketplace | CSDigitalFinds</title>
+  <meta name="description" content="Browse live CSDigitalFinds shopping categories, Amazon product picks, Awin partner products, buying guides, deals, and comparison resources.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{--navy:#071426;--navy2:#102b4b;--red:#e62424;--gold:#ddb329;--bg:#eef3f9;--text:#0d1728}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+    .topbar{background:#020b1c;color:var(--gold);text-align:center;padding:13px;font-weight:700}
+    .header{background:var(--navy);color:#fff;padding:24px 5%;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+    .logo{font-size:36px;font-weight:800}.logo span{color:var(--gold)}
+    .searchbar{display:flex;flex:1;min-width:280px}.searchbar input{width:100%;padding:16px;border:0;border-radius:16px 0 0 16px;font-size:17px}.searchbar button{border:0;background:var(--gold);padding:0 28px;border-radius:0 16px 16px 0;font-weight:800}
+    nav{background:var(--navy2);display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:15px}
+    nav a{color:#fff;text-decoration:none;font-weight:700}
+    main{max-width:1500px;margin:auto;padding:34px 5% 55px}
+    h1{font-size:42px;margin:0 0 10px}.intro{font-size:18px;line-height:1.55;max-width:850px;margin-bottom:28px}
+    .notice{background:#fff8df;border-left:5px solid var(--gold);padding:15px 18px;border-radius:8px;margin-bottom:28px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+    .card{background:#fff;border-radius:22px;padding:26px;box-shadow:0 12px 30px rgba(15,35,60,.09);display:flex;flex-direction:column;min-height:340px}
+    .tag{align-self:flex-start;background:var(--red);color:#fff;padding:9px 13px;border-radius:10px;font-weight:800}
+    .icon{font-size:70px;text-align:center;margin:22px 0 12px}
+    .card h2{font-size:27px;margin:0 0 12px}.card p{font-size:17px;line-height:1.5;flex:1}
+    .button{display:block;text-align:center;background:var(--navy);color:#fff;text-decoration:none;padding:15px;border-radius:14px;font-weight:800;margin-top:18px}
+    .button:hover{background:#173d69}.button.gold{background:var(--gold);color:#111}
+    footer{background:var(--navy);color:#fff;text-align:center;padding:28px 5%;line-height:1.6}
+    footer a{color:#fff}
+    @media(max-width:650px){h1{font-size:34px}.logo{font-size:30px}}
+  </style>
+</head>
+<body>
+  <div class="topbar">CSDigitalFinds — Find Smarter. Shop Better.</div>
+  <header class="header">
+    <div class="logo">CS<span>Digital</span>Finds</div>
+    <div class="searchbar">
+      <input aria-label="Search" placeholder="Search products, deals, categories...">
+      <button type="button" onclick="location.href='products.html'">Search</button>
+    </div>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="categories.html">Categories</a>
+    <a href="guides.html">Buying Guides</a>
+    <a href="deals.html">Deals</a>
+    <a href="compare.html">Compare</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <h1>Affiliate Marketplace</h1>
+    <p class="intro">Browse live shopping resources, approved affiliate offers, product collections, and buying guides. Every button below leads to an active page—there are no “Coming Soon” placeholders.</p>
+    <div class="notice"><strong>Disclosure:</strong> CSDigitalFinds may earn a commission from qualifying purchases made through approved affiliate links, at no extra cost to you.</div>
+
+    <section class="grid">
+      <article class="card">
+        <span class="tag">Amazon Products</span><div class="icon">🛒</div>
+        <h2>Featured Product Picks</h2><p>Browse active Amazon product recommendations across home, electronics, beauty, pets, and everyday essentials.</p>
+        <a class="button gold" href="products.html">Browse Products</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Awin Partner</span><div class="icon">⚡</div>
+        <h2>EVDANCE EV Charging</h2><p>Explore electric-vehicle chargers, cables, adapters, and accessories through the approved Awin partner page.</p>
+        <a class="button" href="ev-charging.html">View EV Charging</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Buying Guides</span><div class="icon">📘</div>
+        <h2>Helpful Shopping Guides</h2><p>Read practical guides designed to help compare features, uses, and product categories before purchasing.</p>
+        <a class="button" href="guides.html">Read Buying Guides</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Current Deals</span><div class="icon">🏷️</div>
+        <h2>Deals and Featured Finds</h2><p>Visit the active deals page for featured finds and convenient links to current shopping selections.</p>
+        <a class="button gold" href="deals.html">View Deals</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Electronics</span><div class="icon">💻</div>
+        <h2>Electronics and Tech</h2><p>Browse electronics, smart-home products, computer accessories, and technology-focused recommendations.</p>
+        <a class="button" href="electronics.html">Explore Electronics</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Home & Kitchen</span><div class="icon">🏠</div>
+        <h2>Home and Kitchen Picks</h2><p>Find useful home products, kitchen gadgets, organization tools, and everyday household recommendations.</p>
+        <a class="button" href="home-kitchen.html">Shop Home & Kitchen</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Beauty</span><div class="icon">✨</div>
+        <h2>Beauty and Personal Care</h2><p>Explore beauty, grooming, and personal-care product categories through the active beauty page.</p>
+        <a class="button" href="beauty.html">Explore Beauty</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Pets</span><div class="icon">🐾</div>
+        <h2>Pet Product Picks</h2><p>Browse selected pet essentials and useful product ideas for dogs, cats, and other household pets.</p>
+        <a class="button" href="best-pet-products.html">View Pet Products</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Comparison Tools</span><div class="icon">⚖️</div>
+        <h2>Compare Before Buying</h2><p>Use the comparison page to organize choices and review categories before visiting a retailer.</p>
+        <a class="button" href="compare.html">Compare Options</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">AI Shopping</span><div class="icon">🤖</div>
+        <h2>AI Shopping Assistant</h2><p>Use CSDigitalFinds shopping resources to navigate product categories and discover relevant guides.</p>
+        <a class="button" href="ai-shopping-assistant.html">Open Shopping Assistant</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Categories</span><div class="icon">🗂️</div>
+        <h2>Browse All Categories</h2><p>See the full category directory and move directly to the section that matches your shopping needs.</p>
+        <a class="button gold" href="categories.html">Browse Categories</a>
+      </article>
+
+      <article class="card">
+        <span class="tag">Contact</span><div class="icon">✉️</div>
+        <h2>Questions or Suggestions?</h2><p>Contact CSDigitalFinds with questions, corrections, partnership inquiries, or category suggestions.</p>
+        <a class="button" href="contact.html">Contact Us</a>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <strong>CSDigitalFinds © 2026</strong><br>
+    As an Amazon Associate, CSDigitalFinds may earn from qualifying purchases. CSDigitalFinds may also earn from other approved affiliate links.<br>
+    <a href="affiliate-disclosure.html">Affiliate Disclosure</a> | <a href="privacy.html">Privacy Policy</a>
+  </footer>
+</body>
+</html>
