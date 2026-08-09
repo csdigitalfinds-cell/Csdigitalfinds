@@ -1,0 +1,33 @@
+name: CS Digital Finds Site Automation
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 13 * * 1'
+  push:
+    branches: [automation-foundation]
+    paths:
+      - 'data/**'
+      - 'automation/**'
+      - '.github/workflows/site-automation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate centralized product catalog
+        run: python automation/validate_products.py
+      - name: Audit site SEO and affiliate-link markup
+        run: python automation/audit_site.py
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-audit-report
+          path: automation/audit-report.json
