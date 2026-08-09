@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
-"""Import normalized affiliate product feeds into data/products.json.
-
-Feed URLs are supplied only through GitHub Actions secrets. This importer does
-not scrape affiliate sites and does not invent tracking links. It accepts JSON
-or CSV feeds that the publisher is authorized to use.
-"""
-import csv, io, json, os, urllib.request
+"""Import authorized affiliate JSON/CSV feeds into data/products.json."""
+import csv, io, json, os, re, urllib.request
 from pathlib import Path
 
 OUT = Path('data/products.json')
@@ -21,18 +16,44 @@ def fetch(url):
         return obj if isinstance(obj, list) else obj.get('products', [])
     return list(csv.DictReader(io.StringIO(raw)))
 
+def value(row, *keys):
+    # Match both normalized feeds and network exports regardless of header case.
+    lookup = {str(k).strip().lower(): v for k, v in row.items()}
+    for key in keys:
+        v = lookup.get(key.lower())
+        if v is not None and str(v).strip():
+            return str(v).strip()
+    return ''
+
+def cj_image(row):
+    html = value(row, 'HTML LINKS')
+    m = re.search(r'<img[^>]+src=["\']([^"\']+)', html, re.I)
+    return m.group(1) if m else ''
+
 def normalize(row, network):
-    get=lambda *ks: next((str(row.get(k,'')).strip() for k in ks if row.get(k)), '')
+    if network == 'CJ':
+        return {
+          'id': value(row, 'LINK ID'),
+          'name': value(row, 'NAME'),
+          'network': 'cj',
+          'merchant': value(row, 'ADVERTISER'),
+          'category': value(row, 'CATEGORY'),
+          'description': value(row, 'DESCRIPTION'),
+          'image_url': cj_image(row),
+          'affiliate_url': value(row, 'CLICK URL'),
+          'price': '',
+          'active': value(row, 'RELATIONSHIP STATUS').lower() in ('active','joined','')
+        }
     return {
-      'id': get('id','sku','product_id','asin'),
-      'name': get('name','title','product_name'),
+      'id': value(row,'id','sku','product_id','asin'),
+      'name': value(row,'name','title','product_name'),
       'network': network.lower(),
-      'merchant': get('merchant','advertiser','brand'),
-      'category': get('category','product_type'),
-      'description': get('description','short_description'),
-      'image_url': get('image_url','image','image_link'),
-      'affiliate_url': get('affiliate_url','tracking_url','link','url'),
-      'price': get('price','sale_price'),
+      'merchant': value(row,'merchant','advertiser','brand'),
+      'category': value(row,'category','product_type'),
+      'description': value(row,'description','short_description'),
+      'image_url': value(row,'image_url','image','image_link'),
+      'affiliate_url': value(row,'affiliate_url','tracking_url','link','url'),
+      'price': value(row,'price','sale_price'),
       'active': True
     }
 
@@ -44,13 +65,13 @@ def main():
             continue
         for row in fetch(url):
             p=normalize(row, network)
-            if p['name'] and p['affiliate_url']:
+            if p['name'] and p['affiliate_url'] and p['active']:
                 products.append(p)
     if not products:
         print('No configured affiliate feeds; keeping existing catalog unchanged.')
         return
     dedup={p['affiliate_url']:p for p in products}
     OUT.write_text(json.dumps({'products':list(dedup.values())}, indent=2)+'\n', encoding='utf-8')
-    print(f'Imported {len(dedup)} products from configured feeds.')
+    print(f'Imported {len(dedup)} products/offers from configured feeds.')
 
 if __name__ == '__main__': main()
