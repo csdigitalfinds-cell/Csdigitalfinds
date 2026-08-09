@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: '17 13 * * 1'
   push:
-    branches: [automation-foundation]
+    branches: [main, affiliate-connectors]
     paths:
       - 'data/**'
       - 'automation/**'
@@ -22,6 +22,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Import authorized affiliate feeds when configured
+        env:
+          CJ_FEED_URL: ${{ secrets.CJ_FEED_URL }}
+          AWIN_FEED_URL: ${{ secrets.AWIN_FEED_URL }}
+          AMAZON_FEED_URL: ${{ secrets.AMAZON_FEED_URL }}
+        run: python automation/import_affiliate_feeds.py
       - name: Validate centralized product catalog
         run: python automation/validate_products.py
       - name: Audit site SEO and affiliate-link markup
