@@ -2,11 +2,12 @@
 """Import Amazon products through Amazon Creators API into data/products.json.
 
 Credentials are read only from environment variables/GitHub Actions secrets.
-Existing non-Amazon products are preserved. If Amazon access is unavailable,
-the existing catalog is left unchanged.
+Existing non-Amazon products are preserved. Missing credentials skip the import;
+configured credentials that Amazon rejects fail the workflow so the problem is visible.
 """
 import json
 import os
+import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -16,7 +17,6 @@ TOKEN_URL = "https://api.amazon.com/auth/o2/token"
 API_URL = "https://creatorsapi.amazon/catalog/v1/searchItems"
 MARKETPLACE = "www.amazon.com"
 
-# Broad store categories. Each request can return up to ten products.
 SEARCHES = [
     ("Electronics", "popular electronics"),
     ("HomeAndKitchen", "home kitchen essentials"),
@@ -78,7 +78,6 @@ def normalize(item, category):
         "category": category,
         "description": "",
         "image_url": image_url,
-        # Use Amazon's vended URL unchanged so the Associate attribution remains intact.
         "affiliate_url": str(item.get("detailPageURL", "")).strip(),
         "price": "",
         "active": True,
@@ -123,9 +122,21 @@ def main():
                 product = normalize(item, category)
                 if product["id"] and product["name"] and product["affiliate_url"]:
                     amazon_products.append(product)
-    except (urllib.error.HTTPError, urllib.error.URLError, KeyError, ValueError) as exc:
-        print(f"Amazon Creators API import unavailable ({exc}); keeping catalog unchanged.")
-        return
+    except urllib.error.HTTPError as exc:
+        detail = ""
+        try:
+            detail = exc.read().decode("utf-8", errors="replace")[:500]
+        except Exception:
+            pass
+        print(f"Amazon Creators API HTTP error {exc.code}. {detail}", file=sys.stderr)
+        raise SystemExit(1)
+    except (urllib.error.URLError, KeyError, ValueError) as exc:
+        print(f"Amazon Creators API import failed: {exc}", file=sys.stderr)
+        raise SystemExit(1)
+
+    if not amazon_products:
+        print("Amazon Creators API returned zero usable products; failing rather than reporting a false success.", file=sys.stderr)
+        raise SystemExit(1)
 
     existing = [p for p in load_existing() if str(p.get("network", "")).lower() != "amazon"]
     dedup = {p.get("affiliate_url") or f"{p.get('network')}:{p.get('id')}": p for p in existing}
