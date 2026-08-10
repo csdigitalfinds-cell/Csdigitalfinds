@@ -12,7 +12,7 @@ on:
       - '.github/workflows/site-automation.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   validate-and-audit:
@@ -37,6 +37,18 @@ jobs:
         run: python automation/validate_products.py
       - name: Audit site SEO and affiliate-link markup
         run: python automation/audit_site.py
+      - name: Persist validated affiliate catalog updates
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if git diff --quiet -- data/products.json; then
+            echo "No affiliate catalog changes to persist."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/products.json
+            git commit -m "Update affiliate product catalog [skip ci]"
+            git push
+          fi
       - name: Upload audit report
         uses: actions/upload-artifact@v4
         with:
