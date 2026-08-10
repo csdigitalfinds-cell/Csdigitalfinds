@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: '17 13 * * 1'
   push:
-    branches: [main, affiliate-connectors]
+    branches: [main]
     paths:
       - 'data/**'
       - 'automation/**'
@@ -22,18 +22,20 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Import authorized CJ and Awin affiliate feeds when configured
+      - name: Import configured CJ, Awin, NordVPN and NordPass feeds
         env:
           CJ_FEED_URL: ${{ secrets.CJ_FEED_URL }}
           AWIN_FEED_URL: ${{ secrets.AWIN_FEED_URL }}
+          NORDVPN_FEED_URL: ${{ secrets.NORDVPN_FEED_URL }}
+          NORDPASS_FEED_URL: ${{ secrets.NORDPASS_FEED_URL }}
         run: python automation/import_affiliate_feeds.py
-      - name: Import Amazon products through Creators API when configured
+      - name: Import Amazon products through Creators API
         env:
           AMAZON_CREATOR_CREDENTIAL_ID: ${{ secrets.AMAZON_CREATOR_CREDENTIAL_ID }}
           AMAZON_CREATOR_SECRET: ${{ secrets.AMAZON_CREATOR_SECRET }}
           AMAZON_PARTNER_TAG: csdigitalfinds-20
         run: python automation/import_amazon_creators.py
-      - name: Validate centralized product catalog
+      - name: Validate unified affiliate catalog
         run: python automation/validate_products.py
       - name: Audit site SEO and affiliate-link markup
         run: python automation/audit_site.py
