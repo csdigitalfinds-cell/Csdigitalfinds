@@ -29,6 +29,7 @@ a{text-decoration:none;color:inherit}
 .icon,.img,.product .icon{font-size:78px;line-height:1;text-align:center;margin:8px 0}.product h3,.card h3{font-size:23px;margin:4px 0}.product p,.card p{color:#4b5563;line-height:1.45;margin:0 0 8px}.stars{color:#d4af37;font-weight:900}.price{font-size:22px;font-weight:900}
 .light{background:#fff}
 footer{background:#020817;color:#fff;text-align:center;padding:32px;margin-top:25px}footer a{color:#d4af37}
+.social-card{transition:transform .18s ease,box-shadow .18s ease}.social-card:hover,.social-card:focus{transform:translateY(-4px);box-shadow:0 16px 34px rgba(0,0,0,.14)}.social-card .shop{width:100%}.launch-note{margin-top:24px;background:#fff7db;border-radius:14px;padding:16px;line-height:1.5}
 @media(max-width:1000px){.top-grid,.hero-deal{grid-template-columns:1fr}.quick-cats{grid-template-columns:repeat(4,1fr)}.header{display:block;text-align:center}.searchbar{margin:14px 0}}
 @media(max-width:600px){.quick-cats{grid-template-columns:1fr 1fr}.hero-copy h1{font-size:34px}.hero-img{font-size:90px}.logo{font-size:28px}}
 
