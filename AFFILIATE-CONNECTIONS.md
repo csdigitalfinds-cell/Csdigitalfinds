@@ -1,23 +1,26 @@
 # Affiliate connections
 
-CS Digital Finds can import authorized product feeds without storing credentials in public code.
+CS Digital Finds uses one unified automation path for authorized affiliate sources while keeping all private values in GitHub Actions secrets.
 
-## Required GitHub Actions secrets
+## Connections
 
-Add only the feed/API URLs issued or authorized by each network:
+Amazon Creators API:
+- `AMAZON_CREATOR_CREDENTIAL_ID`
+- `AMAZON_CREATOR_SECRET`
+- partner tag is configured by the workflow
 
+Authorized feeds/tracking exports:
 - `CJ_FEED_URL`
 - `AWIN_FEED_URL`
-- `AMAZON_FEED_URL`
-
-Repository path: Settings > Secrets and variables > Actions > New repository secret.
+- `NORDVPN_FEED_URL`
+- `NORDPASS_FEED_URL`
 
 Do not commit passwords, API tokens, secret keys, verification codes, or private feed URLs to repository files.
 
 ## Safety behavior
 
-If no feed secrets are configured, the importer exits successfully and leaves the existing product catalog unchanged. It never creates guessed affiliate links and does not scrape Amazon, CJ, or Awin websites.
+Each feed is merged independently. A configured feed that returns zero usable offers fails visibly rather than silently reporting success. An unconfigured feed is skipped without erasing another network's catalog. Amazon authentication errors fail visibly. Existing networks are preserved when another network imports.
 
-## Publishing policy
+## Publishing
 
-Feed import and validation are separated from storefront rendering. New feed data should be reviewed before automatic publication is enabled. This prevents malformed feeds, expired links, or unexpected merchant data from overwriting the live storefront.
+After all configured sources import successfully, the catalog is validated once and changes are persisted to `main`. This repair branch does not run production affiliate APIs automatically; it is intended to be merged only when the required account-issued secrets are present.
